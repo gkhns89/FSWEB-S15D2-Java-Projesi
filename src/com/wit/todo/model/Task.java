@@ -37,9 +37,7 @@ public class Task {
         return status;
     }
 
-    public Priority getPrio() {
-        return prio;
-    }
+    public Priority getPrio() { return prio; }
 
     @Override
     public boolean equals(Object o) {

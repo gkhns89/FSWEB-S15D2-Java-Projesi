@@ -1,5 +1,7 @@
 package com.wit.todo.model;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TaskData {
@@ -38,7 +40,36 @@ public class TaskData {
     return annsTasks;
 
    }
-  return null;
- }
+  if (taskOwnerName.equalsIgnoreCase("bob")) {
+   return bobsTasks;
 
+  }
+  if (taskOwnerName.equalsIgnoreCase("carol")) {
+   return carolsTasks;
+
+  }
+  if (taskOwnerName.equalsIgnoreCase("all")) {
+   return carolsTasks;
+
+  }
+  return new HashSet<>();
+ }
+ public Set<Task> getUnionsExample(Set<Task>... toBeUnions) {
+  Set<Task> totals = new LinkedHashSet<>();  // COPY
+  for(Set<Task> G: toBeUnions){
+   totals.add((Task)G);
+  }
+  return totals;
+ }
+ public Set<Task> getIntersect(Set<Task> firstCircle, Set<Task> secondCircle){
+  Set<Task> inters = new HashSet<>(firstCircle);
+  inters.retainAll(secondCircle);
+  return inters;
+
+ }
+ public Set<Task> getDifference(Set<Task> firstCircle, Set<Task> secondCircle){
+  Set<Task> differs = new HashSet<>(firstCircle);
+  differs.removeAll(secondCircle);
+  return differs;
+ }
 }
